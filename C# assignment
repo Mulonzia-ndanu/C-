@@ -1,0 +1,39 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.Write("Enter a number to calculate its factorial: ");
+        if (int.TryParse(Console.ReadLine(), out int number) && number >= 0)
+        {
+            long factorial = CalculateFactorialIterative(number);
+            
+            Console.Write("Enter a number to add to the factorial: ");
+            if (int.TryParse(Console.ReadLine(), out int addNumber))
+            {
+                long result = factorial + addNumber;
+                Console.WriteLine($"The factorial of {number} is {factorial}.");
+                Console.WriteLine($"The result after adding {addNumber} is {result}.");
+            }
+            else
+            {
+                Console.WriteLine("Please enter a valid integer to add.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Please enter a valid non-negative integer.");
+        }
+    }
+
+    static long CalculateFactorialIterative(int number)
+    {
+        long result = 1;
+        for (int i = 1; i <= number; i++)
+        {
+            result *= i;
+        }
+        return result;
+    }
+}
